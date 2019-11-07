@@ -1,4 +1,5 @@
 local Main = require("ui.ui"):extend("MainScreen")
+local GAME = require('gamestate')
 
 local SCREEN_W = 100
 local SCREEN_H = 40
@@ -36,7 +37,6 @@ function Main:render(term)
 end
 
 function Main:renderMap(term)
-    term.print(MAP_X, MAP_Y, "Map")
 end
 
 function Main:renderMsgs(term)

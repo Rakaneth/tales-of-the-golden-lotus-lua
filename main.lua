@@ -8,11 +8,14 @@ local Entity = require("entity.entity")
 --local mixins = require("entity.mixin")
 --local block_move, block_sight, inventory, player_actor, vitals = table.unpack(mixins)
 local beholder = require("lib.beholder")
---require("ui.input")
+require("ui.input")
 
 local function main()
-    --init terminal
+    --init and config terminal
     terminal.open()
+    terminal.set("log: file=blt.log, level=trace")
+    terminal.set("font: assets/UbuntuMono-r.ttf, size=14x14")
+    terminal.set("window: title='Tales of the Golden Lotus', size=100x40")
 
     --init uis
     local input
@@ -33,7 +36,7 @@ local function main()
         beholder.trigger(UIStack:peek().name, input)
 
         if input == terminal.TK_CLOSE then
-            UIStack:popall()
+            beholder.trigger("quit")
         end
     until #UIStack.uis == 0
 

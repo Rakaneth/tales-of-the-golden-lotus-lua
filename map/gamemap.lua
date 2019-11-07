@@ -4,6 +4,7 @@ local Grid = ROT.Type.Grid
 local PointSet = ROT.Type.PointSet
 local FOV = ROT.FOV.Precise
 local utils = require("utils")
+local GAME = require("gamestate")
 local Tiles = {
     floor = {
         walk = true,
@@ -177,6 +178,21 @@ end
 
 function GameMap:isExplored(x, y)
     return self._explored:find(x, y)
+end
+
+function GameMap:cam(x, y, sw, sh)
+    local calc = function(p, s, m)
+        return utils.clamp(p - s // 2, 0, math.max(0, m - s))
+    end
+    local left = calc(x, sw, self.width)
+    local top = calc(y, sh, self.height)
+    return left, top
+end
+
+function GameMap:mapToScreen(x, y)
+    local player = GAME.player
+    local left, top = self.cam(player.x, player.y)
+    return x - left, y - top
 end
 
 return GameMap
