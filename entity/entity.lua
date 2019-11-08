@@ -26,6 +26,7 @@ function Entity:init(optParam)
         self.glyph = utf8.codepoint("@")
     end
     for _, mixin in pairs(opts.mixins or {}) do
+        --local mixin = utils.clone(m)
         for k, v in pairs(mixin) do
             if k == "name" then
                 self.mixins[v] = true
