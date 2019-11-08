@@ -8,6 +8,7 @@ local Entity = require("entity.entity")
 --local mixins = require("entity.mixin")
 --local block_move, block_sight, inventory, player_actor, vitals = table.unpack(mixins)
 local beholder = require("lib.beholder")
+local GAME = require('gamestate')
 require("ui.input")
 
 local function main()

@@ -1,2 +1,8 @@
 # BLT log
 blt.log
+
+#VS Code
+.vscode/
+
+#Debugger
+_debugger.lua
